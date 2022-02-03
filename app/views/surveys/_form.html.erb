@@ -1,0 +1,38 @@
+<%= form_with(model: survey) do |form| %>
+  <% if survey.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+
+      <ul>
+        <% survey.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, "Enter Your Name" %>
+    <%= form.text_area :name, id: :survey_name, class: "form-control" %>
+  </div>
+
+  <div>
+
+    <div class="form-group">
+    <%= form.label :laptop, "Do you own a laptop?" %><br />
+    <%= form.label :laptop, "Yes", :value => "true" %>
+    <%= form.radio_button :laptop, 'yes' %>
+    <%= form.label :laptop, "No", :value => "false" %>
+    <%= form.radio_button :laptop, 'No' %>
+  </div>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.select :os, ['Mac OSX', 'Windows 11', 'Windows 7 or below', 'Linux', 'N/A']%>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Submit Your Response", class: "btn btn-primary" %>
+  </div>
+<% end %>
